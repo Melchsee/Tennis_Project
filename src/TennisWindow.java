@@ -1,4 +1,5 @@
 import java.util.Arrays;
+
 import javafx.application.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 
-public class Tennis extends Application{
+public class TennisWindow extends Application{
 		//variables here
 
 		public static void main (String [] args)
@@ -18,26 +19,38 @@ public class Tennis extends Application{
 
 		@Override public void start(Stage primaryStage) throws Exception
 		{
-			//sets the dimensions of the scene and the sudoku board
 			int SceneW = 1000;
 			int SceneH = 1000;
-			int frameW = (int) (0.8*SceneW);
-			int frameH = (int) (0.8*SceneH);
-			double squareLength = 800/9;
+			int tennisCourtWidth = (int) 800;
+			int tennisCourtHeight = (int) 400;
 		
 			Rectangle tennisCourt = new Rectangle();
 			tennisCourt.setX(100);
-			tennisCourt.setY(100);
-			tennisCourt.setWidth(frameW);
-			tennisCourt.setHeight(frameH);
+			tennisCourt.setY(300);
+			tennisCourt.setWidth(tennisCourtWidth);
+			tennisCourt.setHeight(tennisCourtHeight);
 			tennisCourt.setFill(Color.WHITE);
 			tennisCourt.setStroke(Color.BLACK);
 			tennisCourt.setStrokeWidth(5);
-
+			
+		
+			Line horLine = new Line();
+			horLine.setStartX(100);
+			horLine.setStartY(500);
+			horLine.setEndX(900);
+			horLine.setEndY(500);
+			
+			Line vertLine = new Line();
+			vertLine.setStartX(500);
+			vertLine.setStartY(300);
+			vertLine.setEndX(500);
+			vertLine.setEndY(700);
+			
 			Group root = new Group();
+			root.getChildren().addAll(tennisCourt, horLine, vertLine);
 			Scene scene = new Scene(root, SceneW, SceneH);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Sudoku");
+			primaryStage.setTitle("Tennis Court");
 			primaryStage.show();
 		}
 }
