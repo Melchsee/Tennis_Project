@@ -1,17 +1,9 @@
-import javafx.scene.paint.*;
-import javafx.scene.shape.*;
-
-public class TennisPlayer extends Circle{
-	
+public class TennisPlayer {
+	public int x, y;
 	public TennisPlayer(int x, int y)
 	{
-		setCenterX(x);
-		setCenterY(y);
-		setRadius(50);
-		setFill(Color.WHITE);
-		setStroke(Color.BLACK);
-		setStrokeWidth(5);
-	
+		this.x = x;
+		this.y = y;
 	}
 
 }
