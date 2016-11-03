@@ -4,14 +4,18 @@ import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class Tennis extends Application{
 		//variables here
 
+		int speed = 15;
+		int angle2 = 0;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
+		TennisBall ball;
 		GraphicsContext gc;
 		public static void main (String [] args)
 		{
@@ -25,8 +29,9 @@ public class Tennis extends Application{
 
 			Group root = new Group();
 			tennisCourt = new TennisCourt();
-			player1 = new TennisPlayer (475,50);
-			player2 = new TennisPlayer (475,900);
+			player1 = new TennisPlayer(475,50);
+			player2 = new TennisPlayer(475,900);
+			ball = new TennisBall(490, 750);
 			
 			Canvas canvas = new Canvas(SceneW, SceneH);
 			gc = canvas.getGraphicsContext2D();
@@ -38,8 +43,45 @@ public class Tennis extends Application{
 				}
 			};
 			aTimer.start();
+			 
 			root.getChildren().addAll(canvas);
 			Scene scene = new Scene(root, SceneW, SceneH);
+			scene.setOnKeyPressed(event -> {
+				switch(event.getCode())
+				{
+				case A:
+					player2.x = player2.x-speed;
+					break;
+				case S:
+					player2.y = player2.y+speed;
+					break;
+				case D:
+					player2.x = player2.x+speed;
+					break;
+				case W:
+					player2.y = player2.y-speed;
+					break;
+				case SPACE:
+					//angle1
+					break;
+					
+				case LEFT:
+					player1.x = player1.x-speed;
+					break;
+				case DOWN:
+					player1.y = player1.y+speed;
+					break;
+				case RIGHT:
+					player1.x = player1.x+speed;
+					break;
+				case UP:
+					player1.y = player1.y-speed;
+					break;
+				case CONTROL:
+					angle2 = 30;
+					break;
+				}
+			});
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Tennis Court");
 			primaryStage.show();
@@ -56,7 +98,12 @@ public class Tennis extends Application{
 			
 			gc.setFill(Color.DARKTURQUOISE);
 			gc.fillOval(player1.x, player1.y, 50, 50);
+			gc.fillRect(player1.x-(50-30*(Math.sin(angle2))),  player1.y+(Math.sin(angle2)*20), 50, 20);
 			gc.fillOval(player2.x, player2.y, 50, 50);
+			gc.fillRect(player2.x+50,  player2.y, 50, 20);
+			
+			gc.setFill(Color.GREENYELLOW);
+			gc.fillOval(ball.x, ball.y, 20, 20);
 			
 			gc.setStroke(Color.WHITE);
 			gc.setLineWidth(4);
