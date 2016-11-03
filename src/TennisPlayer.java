@@ -4,9 +4,6 @@ public class TennisPlayer {
 	{
 		this.x = x;
 		this.y = y;
-		double angle1 = 0;
-		
-		
 	}
 
 }
