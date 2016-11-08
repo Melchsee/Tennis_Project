@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.*;
 import javafx.stage.*;
@@ -11,12 +13,13 @@ import javafx.scene.shape.Line;
 public class Tennis extends Application{
 		//variables here
 
-		int speed = 15;
+		int speed = 8;
 		int angle2 = 0;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
 		GraphicsContext gc;
+
 		public static void main (String [] args)
 		{
 			launch(args);
@@ -35,53 +38,75 @@ public class Tennis extends Application{
 			
 			Canvas canvas = new Canvas(SceneW, SceneH);
 			gc = canvas.getGraphicsContext2D();
+				
+			root.getChildren().addAll(canvas);
+		
+			HashMap<KeyCode, Boolean> keysPressed  = new HashMap<>();
+			Scene scene = new Scene(root, SceneW, SceneH);
+
+			
+			scene.setOnKeyPressed(event -> {
+				keysPressed.put(event.getCode(), true);
+			});
+
+			scene.setOnKeyReleased(event -> {
+				keysPressed.put(event.getCode(), false);
+			});
+			
 			
 			AnimationTimer aTimer = new AnimationTimer(){
 				@Override
 				public void handle(long arg0) {
 					draw();
+				
+					if(keysPressed.getOrDefault(KeyCode.A, false))
+					{			
+						player2.x = player2.x-speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.S, false))
+					{			
+						player2.y = player2.y+speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.D, false))
+					{			
+						player2.x = player2.x+speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.W, false))
+					{			
+						player2.y = player2.y-speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.SPACE, false))
+					{			
+						//angle1
+					}
+					if(keysPressed.getOrDefault(KeyCode.LEFT, false))
+					{			
+						player1.x = player1.x-speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.DOWN, false))
+					{			
+						player1.y = player1.y+speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.RIGHT, false))
+					{			
+						player1.x = player1.x+speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.UP, false))
+					{			
+						player1.y = player1.y-speed;
+					}
+					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
+					{			
+						angle2 = 30;
+					}
+					if(keysPressed.getOrDefault(KeyCode.ENTER, false))
+					{			
+						player1 = new TennisPlayer(475,50);
+						player2 = new TennisPlayer(475,900);
+					}
 				}
 			};
 			aTimer.start();
-			 
-			root.getChildren().addAll(canvas);
-			Scene scene = new Scene(root, SceneW, SceneH);
-			scene.setOnKeyPressed(event -> {
-				switch(event.getCode())
-				{
-				case A:
-					player2.x = player2.x-speed;
-					break;
-				case S:
-					player2.y = player2.y+speed;
-					break;
-				case D:
-					player2.x = player2.x+speed;
-					break;
-				case W:
-					player2.y = player2.y-speed;
-					break;
-				case SPACE:
-					//angle1
-					break;
-					
-				case LEFT:
-					player1.x = player1.x-speed;
-					break;
-				case DOWN:
-					player1.y = player1.y+speed;
-					break;
-				case RIGHT:
-					player1.x = player1.x+speed;
-					break;
-				case UP:
-					player1.y = player1.y-speed;
-					break;
-				case CONTROL:
-					angle2 = 30;
-					break;
-				}
-			});
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Tennis Court");
 			primaryStage.show();
