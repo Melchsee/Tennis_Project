@@ -63,7 +63,18 @@ public class Tennis extends Application{
 					player2.y = player2.y-speed;
 					break;
 				case SPACE:
-					//angle2
+					if(angle2 == 90)
+					{
+						angle2 = 0;
+					}
+					else if (angle2 == 0)
+					{
+						angle2 = 90;
+					}
+					else
+					{
+						angle2 = 0;
+					}
 					break;
 					
 				case LEFT:
@@ -79,7 +90,18 @@ public class Tennis extends Application{
 					player1.y = player1.y-speed;
 					break;
 				case CONTROL:
-					angle1 = 30;
+					if(angle1 == 90)
+						{
+							angle1 = 0;
+						}
+					else if (angle1 == 0)
+					{
+						angle1 = 90;
+					}
+					else
+					{
+						angle1 = 0;
+					}
 					break;
 				}
 			});
@@ -100,7 +122,7 @@ public class Tennis extends Application{
 			gc.setFill(Color.DARKTURQUOISE);
 			gc.fillOval(player1.x, player1.y, 50, 50);
 			gc.beginPath();
-			gc.moveTo(player1.x, player1.y + 15);//Math.sin and Math.cos * something to change angle
+			gc.moveTo(player1.x + (15 * Math.sin(angle1)), player1.y + 15 + (35 * Math.sin(angle1)));
 			gc.lineTo(player1.x - 50, player1.y + 15);
 			gc.lineTo(player1.x - 50, player1.y + 35);
 			gc.lineTo(player1.x, player1.y + 35);
