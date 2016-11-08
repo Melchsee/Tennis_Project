@@ -8,13 +8,12 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 
 public class Tennis extends Application{
 		//variables here
 
 		int speed = 8;
-		int angle1 = 0;
-
 		int angle2 = 0;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
@@ -33,8 +32,8 @@ public class Tennis extends Application{
 
 			Group root = new Group();
 			tennisCourt = new TennisCourt();
-			player1 = new TennisPlayer(475, 50);
-			player2 = new TennisPlayer(475, 900);
+			player1 = new TennisPlayer(475,50);
+			player2 = new TennisPlayer(475,900);
 			ball = new TennisBall(490, 750);
 			
 			Canvas canvas = new Canvas(SceneW, SceneH);
@@ -108,7 +107,6 @@ public class Tennis extends Application{
 				}
 			};
 			aTimer.start();
-
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Tennis Court");
 			primaryStage.show();
@@ -125,17 +123,9 @@ public class Tennis extends Application{
 			
 			gc.setFill(Color.DARKTURQUOISE);
 			gc.fillOval(player1.x, player1.y, 50, 50);
-			gc.beginPath();
-			gc.moveTo(player1.x + (15 * Math.sin(angle1)), player1.y + 15 + (35 * Math.sin(angle1)));
-			gc.lineTo(player1.x - 50, player1.y + 15);
-			gc.lineTo(player1.x - 50, player1.y + 35);
-			gc.lineTo(player1.x, player1.y + 35);
-			gc.lineTo(player1.x, player1.y + 15);
-			gc.closePath();
-			gc.fill();
+			gc.fillRect(player1.x-(50-30*(Math.sin(angle2))),  player1.y+(Math.sin(angle2)*20), 50, 20);
 			gc.fillOval(player2.x, player2.y, 50, 50);
-			gc.fillRect(player2.x + 50,  player2.y, 50, 20);
-			
+			gc.fillRect(player2.x+50,  player2.y, 50, 20);
 			
 			gc.setFill(Color.GREENYELLOW);
 			gc.fillOval(ball.x, ball.y, 20, 20);
@@ -146,7 +136,7 @@ public class Tennis extends Application{
 			gc.strokeLine(500, 300, 500, 700);
 			for(int i = 0; i < 2; i++)
 			{	
-				gc.strokeLine(275 + 450 * i, 100, 275 + 450 * i, 900);
+				gc.strokeLine(275+450*(i), 100, 275+450*(i), 900);
 			}
 			
 			for(int i = 0; i < 3; i++)
@@ -167,13 +157,13 @@ public class Tennis extends Application{
 					lineEnd = 725;
 					gc.setLineWidth(4);
 				}
-				gc.strokeLine(lineStart, 100+200*(i + 1), lineEnd, 100 + 200 * (i + 1));
+				gc.strokeLine(lineStart, 100+200*(i+1), lineEnd, 100+200*(i+1));
 				gc.setStroke(Color.WHITE);
 			}
 			
 			for(int i = 0; i < 2; i++)
 			{	
-				gc.strokeLine(500, 100 + 790 * i, 500, 110 + 790 * i);
+				gc.strokeLine(500, 100+790*i, 500, 110+790*i);
 			}
 		}
 }
