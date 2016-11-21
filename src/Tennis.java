@@ -125,14 +125,20 @@ public class Tennis extends Application{
 			
 			gc.setFill(Color.DARKTURQUOISE);
 			gc.fillOval(player1.x, player1.y, 50, 50);
+			gc.setStroke(Color.DARKTURQUOISE);
+			gc.setLineWidth(20);
+			gc.strokeLine(player1.x - 10, player1.y + 25, player1.x - 60, player1.y + 25);//line for racket
+			/*
 			gc.beginPath();
 			gc.moveTo(player1.x + (15 * Math.sin(angle1)), player1.y + 15 + (35 * Math.sin(angle1)));
+			Rectangle stuff, now trying a line instead
 			gc.lineTo(player1.x - 50, player1.y + 15);
 			gc.lineTo(player1.x - 50, player1.y + 35);
 			gc.lineTo(player1.x, player1.y + 35);
 			gc.lineTo(player1.x, player1.y + 15);
 			gc.closePath();
 			gc.fill();
+			*/
 			gc.fillOval(player2.x, player2.y, 50, 50);
 			gc.fillRect(player2.x + 50,  player2.y, 50, 20);
 			
