@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.*;
@@ -13,9 +15,8 @@ public class Tennis extends Application{
 		//variables here
 
 		int speed = 8;
-		int angle1 = 0;
-
-		int angle2 = 0;
+		double angle1 = 0;
+		double angle2 = 0;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -76,9 +77,16 @@ public class Tennis extends Application{
 					{			
 						player2.y = player2.y-speed;
 					}
-					if(keysPressed.getOrDefault(KeyCode.SPACE, false))
+					if(keysPressed.getOrDefault(KeyCode.ENTER, false))
 					{			
-						//angle1
+						angle1 = Math.PI/2;
+						TimerTask task = new TimerTask() {
+							@Override
+							public void run() {
+								angle1 = 0;
+							}
+						};
+						new Timer().schedule(task, 500);
 					}
 					if(keysPressed.getOrDefault(KeyCode.LEFT, false))
 					{			
@@ -98,9 +106,16 @@ public class Tennis extends Application{
 					}
 					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
 					{			
-						angle2 = 30;
+						angle2 = Math.PI/2;
+						TimerTask task = new TimerTask() {
+							@Override
+							public void run() {
+								angle2 = 0;
+							}
+						};
+						new Timer().schedule(task, 500);
 					}
-					if(keysPressed.getOrDefault(KeyCode.ENTER, false))
+					if(keysPressed.getOrDefault(KeyCode.SPACE, false))
 					{			
 						player1 = new TennisPlayer(475,50);
 						player2 = new TennisPlayer(475,900);
@@ -126,8 +141,8 @@ public class Tennis extends Application{
 			gc.setFill(Color.DARKTURQUOISE);
 			gc.fillOval(player1.x, player1.y, 50, 50);
 			gc.setStroke(Color.DARKTURQUOISE);
-			gc.setLineWidth(20);
-			gc.strokeLine(player1.x - 10, player1.y + 25, player1.x - 60, player1.y + 25);//line for racket
+			gc.setLineWidth(20); //sets width of racket
+			gc.strokeLine(player1.x - 10, player1.y + 25, player1.x - 10 - 50*Math.cos(angle1), player1.y + 25 + 50*Math.sin(angle1));//line for racket
 			/*
 			gc.beginPath();
 			gc.moveTo(player1.x + (15 * Math.sin(angle1)), player1.y + 15 + (35 * Math.sin(angle1)));
@@ -140,7 +155,8 @@ public class Tennis extends Application{
 			gc.fill();
 			*/
 			gc.fillOval(player2.x, player2.y, 50, 50);
-			gc.fillRect(player2.x + 50,  player2.y, 50, 20);
+			gc.setLineWidth(20); //sets width of racket
+			gc.strokeLine(player2.x + 60, player2.y + 25, player2.x + 60 + 50*Math.cos(angle2), player2.y + 25 - 50*Math.sin(angle2));//line for racket
 			
 			
 			gc.setFill(Color.GREENYELLOW);
