@@ -15,8 +15,8 @@ public class Tennis extends Application{
 		//variables here
 
 		int speed = 8;
-		double angle1 = 0;
-		double angle2 = 0;
+		double angle1 = -Math.PI/4;
+		double angle2 = -Math.PI/4;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -63,63 +63,97 @@ public class Tennis extends Application{
 				
 					if(keysPressed.getOrDefault(KeyCode.A, false))
 					{			
-						player2.x = player2.x-speed;
+						player2.x = Math.max(player2.x-speed, 0);
 					}
 					if(keysPressed.getOrDefault(KeyCode.S, false))
 					{			
-						player2.y = player2.y+speed;
+						player2.y = Math.min(player2.y+speed, 950);
 					}
 					if(keysPressed.getOrDefault(KeyCode.D, false))
 					{			
-						player2.x = player2.x+speed;
+						player2.x =  Math.min(player2.x+speed, 950);
 					}
 					if(keysPressed.getOrDefault(KeyCode.W, false))
 					{			
-						player2.y = player2.y-speed;
+						player2.y =  Math.max(player2.y-speed, 500);
 					}
 					if(keysPressed.getOrDefault(KeyCode.ENTER, false))
 					{			
-						angle1 = Math.PI/2;
-						TimerTask task = new TimerTask() {
+						AnimationTimer aTimer = new AnimationTimer(){
+							private boolean max = false;
+							
 							@Override
-							public void run() {
-								angle1 = 0;
+							public void handle(long arg0) {
+								if(max)
+								{
+									angle1 -= Math.PI / 90;
+									if(angle1 <= -Math.PI / 4)
+									{
+										this.stop();
+									}
+								}
+								else
+								{
+									angle1 += Math.PI / 90;
+									if(angle1 >= Math.PI / 4)
+									{
+										max = true;
+									}
+								}
 							}
 						};
-						new Timer().schedule(task, 500);
+						aTimer.start();
 					}
 					if(keysPressed.getOrDefault(KeyCode.LEFT, false))
 					{			
-						player1.x = player1.x-speed;
+						player1.x = Math.max(player1.x-speed, 0);
 					}
 					if(keysPressed.getOrDefault(KeyCode.DOWN, false))
 					{			
-						player1.y = player1.y+speed;
+						player1.y = Math.min(player1.y+speed, 450);
 					}
 					if(keysPressed.getOrDefault(KeyCode.RIGHT, false))
 					{			
-						player1.x = player1.x+speed;
+						player1.x =  Math.min(player1.x+speed, 950);
 					}
 					if(keysPressed.getOrDefault(KeyCode.UP, false))
 					{			
-						player1.y = player1.y-speed;
-					}
-					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
-					{			
-						angle2 = Math.PI/2;
-						TimerTask task = new TimerTask() {
-							@Override
-							public void run() {
-								angle2 = 0;
-							}
-						};
-						new Timer().schedule(task, 500);
+						player1.y =  Math.max(player1.y-speed, 0);
 					}
 					if(keysPressed.getOrDefault(KeyCode.SPACE, false))
+					{			
+						AnimationTimer aTimer = new AnimationTimer(){
+							private boolean max = false;
+							
+							@Override
+							public void handle(long arg0) {
+								if(max)
+								{
+									angle2 -= Math.PI / 90;
+									if(angle2 <= -Math.PI / 4)
+									{
+										this.stop();
+									}
+								}
+								else
+								{
+									angle2 += Math.PI / 90;
+									if(angle2 >= Math.PI / 4)
+									{
+										max = true;
+									}
+								}
+							}							
+						};
+						aTimer.start();
+					}
+					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
 					{			
 						player1 = new TennisPlayer(475,50);
 						player2 = new TennisPlayer(475,900);
 					}
+					
+					
 				}
 			};
 			aTimer.start();
