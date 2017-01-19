@@ -15,8 +15,8 @@ public class Tennis extends Application{
 		//variables here
 
 		int speed = 8;
-		double angle1 = -Math.PI/4;
 		double angle2 = -Math.PI/4;
+		double angle1 = -Math.PI/4;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -86,16 +86,16 @@ public class Tennis extends Application{
 							public void handle(long arg0) {
 								if(max)
 								{
-									angle1 -= Math.PI / 90;
-									if(angle1 <= -Math.PI / 4)
+									angle2 -= Math.PI / 90;
+									if(angle2 <= -Math.PI / 4)
 									{
 										this.stop();
 									}
 								}
 								else
 								{
-									angle1 += Math.PI / 90;
-									if(angle1 >= Math.PI / 4)
+									angle2 += Math.PI / 90;
+									if(angle2 >= Math.PI / 4)
 									{
 										max = true;
 									}
@@ -129,16 +129,16 @@ public class Tennis extends Application{
 							public void handle(long arg0) {
 								if(max)
 								{
-									angle2 -= Math.PI / 90;
-									if(angle2 <= -Math.PI / 4)
+									angle1 -= Math.PI / 90;
+									if(angle1 <= -Math.PI / 4)
 									{
 										this.stop();
 									}
 								}
 								else
 								{
-									angle2 += Math.PI / 90;
-									if(angle2 >= Math.PI / 4)
+									angle1 += Math.PI / 90;
+									if(angle1 >= Math.PI / 4)
 									{
 										max = true;
 									}
@@ -176,7 +176,7 @@ public class Tennis extends Application{
 			gc.fillOval(player1.x, player1.y, 50, 50);
 			gc.setStroke(Color.DARKTURQUOISE);
 			gc.setLineWidth(20); //sets width of racket
-			gc.strokeLine(player1.x - 10, player1.y + 25, player1.x - 10 - 50*Math.cos(angle1), player1.y + 25 + 50*Math.sin(angle1));//line for racket
+			gc.strokeLine(player1.x - 10, player1.y + 25, player1.x - 10 - 50*Math.cos(angle2), player1.y + 25 + 50*Math.sin(angle2));//line for racket
 			/*
 			gc.beginPath();
 			gc.moveTo(player1.x + (15 * Math.sin(angle1)), player1.y + 15 + (35 * Math.sin(angle1)));
@@ -190,7 +190,7 @@ public class Tennis extends Application{
 			*/
 			gc.fillOval(player2.x, player2.y, 50, 50);
 			gc.setLineWidth(20); //sets width of racket
-			gc.strokeLine(player2.x + 60, player2.y + 25, player2.x + 60 + 50*Math.cos(angle2), player2.y + 25 - 50*Math.sin(angle2));//line for racket
+			gc.strokeLine(player2.x + 60, player2.y + 25, player2.x + 60 + 50*Math.cos(angle1), player2.y + 25 - 50*Math.sin(angle1));//line for racket
 			
 			
 			gc.setFill(Color.GREENYELLOW);
