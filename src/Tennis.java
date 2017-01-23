@@ -15,8 +15,10 @@ public class Tennis extends Application{
 		//variables here
 
 		int speed = 8;
-		double angle2 = -Math.PI/4;
-		double angle1 = -Math.PI/4;
+		double angle2 = -Math.PI/8;
+		double angle1 = -Math.PI/8;
+		double ballangle = Math.PI / 2;
+		double ballspeed = -5;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -61,6 +63,9 @@ public class Tennis extends Application{
 				public void handle(long arg0) {
 					draw();
 				
+					ball.x += Math.cos(ballangle) * ballspeed;
+					ball.y += Math.sin(ballangle) * ballspeed;
+					
 					if(keysPressed.getOrDefault(KeyCode.A, false))
 					{			
 						player2.x = Math.max(player2.x-speed, 0);
@@ -86,16 +91,17 @@ public class Tennis extends Application{
 							public void handle(long arg0) {
 								if(max)
 								{
-									angle2 -= Math.PI / 90;
-									if(angle2 <= -Math.PI / 4)
+									
+									angle2 -= Math.PI / 180;
+									if(angle2 <= -Math.PI / 8)
 									{
 										this.stop();
 									}
 								}
 								else
 								{
-									angle2 += Math.PI / 90;
-									if(angle2 >= Math.PI / 4)
+									angle2 += Math.PI / 180;
+									if(angle2 >= Math.PI / 8)
 									{
 										max = true;
 									}
@@ -129,16 +135,16 @@ public class Tennis extends Application{
 							public void handle(long arg0) {
 								if(max)
 								{
-									angle1 -= Math.PI / 90;
-									if(angle1 <= -Math.PI / 4)
+									angle1 -= Math.PI / 180;
+									if(angle1 <= -Math.PI / 8)
 									{
 										this.stop();
 									}
 								}
 								else
 								{
-									angle1 += Math.PI / 90;
-									if(angle1 >= Math.PI / 4)
+									angle1 += Math.PI / 180;
+									if(angle1 >= Math.PI / 8)
 									{
 										max = true;
 									}
@@ -147,13 +153,19 @@ public class Tennis extends Application{
 						};
 						aTimer.start();
 					}
+					
+					if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 25)
+					{
+						ballangle = 3 * Math.PI/2 - angle1;
+					}
+					
+					
 					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
 					{			
 						player1 = new TennisPlayer(475,50);
 						player2 = new TennisPlayer(475,900);
 					}
-					
-					
+							
 				}
 			};
 			aTimer.start();
