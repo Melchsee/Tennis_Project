@@ -18,7 +18,7 @@ public class Tennis extends Application{
 		double angle2 = -Math.PI/8;
 		double angle1 = -Math.PI/8;
 		double ballangle = Math.PI / 2;
-		double ballspeed = -5;
+		double ballspeed = 1;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -133,6 +133,7 @@ public class Tennis extends Application{
 							
 							@Override
 							public void handle(long arg0) {
+								System.out.println(Math.toDegrees(angle1));
 								if(max)
 								{
 									angle1 -= Math.PI / 180;
@@ -149,16 +150,18 @@ public class Tennis extends Application{
 										max = true;
 									}
 								}
+								
 							}							
 						};
 						aTimer.start();
 					}
 					
-					if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 25)
+					/*if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 25)
 					{
 						ballangle = 3 * Math.PI/2 - angle1;
-					}
-					
+						
+						System.out.println(Math.toDegrees(angle1));
+					}*/
 					
 					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
 					{			
