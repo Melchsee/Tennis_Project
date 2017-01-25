@@ -18,7 +18,7 @@ public class Tennis extends Application{
 		double angle2 = -Math.PI/8;
 		double angle1 = -Math.PI/8;
 		double ballangle = Math.PI / 2;
-		double ballspeed = 1;
+		double ballspeed = -1;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -92,16 +92,16 @@ public class Tennis extends Application{
 								if(max)
 								{
 									
-									angle2 -= Math.PI / 180;
-									if(angle2 <= -Math.PI / 8)
+									angle1 -= Math.PI / 180;
+									if(angle1 <= -Math.PI / 8)
 									{
 										this.stop();
 									}
 								}
 								else
 								{
-									angle2 += Math.PI / 180;
-									if(angle2 >= Math.PI / 8)
+									angle1 += Math.PI / 180;
+									if(angle1 >= Math.PI / 8)
 									{
 										max = true;
 									}
@@ -136,16 +136,16 @@ public class Tennis extends Application{
 								System.out.println(Math.toDegrees(angle1));
 								if(max)
 								{
-									angle1 -= Math.PI / 180;
-									if(angle1 <= -Math.PI / 8)
+									angle2 -= Math.PI / 180;
+									if(angle2 <= -Math.PI / 8)
 									{
 										this.stop();
 									}
 								}
 								else
 								{
-									angle1 += Math.PI / 180;
-									if(angle1 >= Math.PI / 8)
+									angle2 += Math.PI / 180;
+									if(angle2 >= Math.PI / 8)
 									{
 										max = true;
 									}
@@ -156,12 +156,12 @@ public class Tennis extends Application{
 						aTimer.start();
 					}
 					
-					/*if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 25)
+					if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 25)
 					{
 						ballangle = 3 * Math.PI/2 - angle1;
 						
-						System.out.println(Math.toDegrees(angle1));
-					}*/
+						//System.out.println(Math.toDegrees(angle1));
+					}
 					
 					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
 					{			
@@ -191,7 +191,7 @@ public class Tennis extends Application{
 			gc.fillOval(player1.x, player1.y, 50, 50);
 			gc.setStroke(Color.DARKTURQUOISE);
 			gc.setLineWidth(20); //sets width of racket
-			gc.strokeLine(player1.x - 10, player1.y + 25, player1.x - 10 - 50*Math.cos(angle2), player1.y + 25 + 50*Math.sin(angle2));//line for racket
+			gc.strokeLine(player1.x - 10, player1.y + 25, player1.x - 10 - 50*Math.cos(angle1), player1.y + 25 + 50*Math.sin(angle1));//line for racket
 			/*
 			gc.beginPath();
 			gc.moveTo(player1.x + (15 * Math.sin(angle1)), player1.y + 15 + (35 * Math.sin(angle1)));
@@ -205,7 +205,7 @@ public class Tennis extends Application{
 			*/
 			gc.fillOval(player2.x, player2.y, 50, 50);
 			gc.setLineWidth(20); //sets width of racket
-			gc.strokeLine(player2.x + 60, player2.y + 25, player2.x + 60 + 50*Math.cos(angle1), player2.y + 25 - 50*Math.sin(angle1));//line for racket
+			gc.strokeLine(player2.x + 60, player2.y + 25, player2.x + 60 + 50*Math.cos(angle2), player2.y + 25 - 50*Math.sin(angle2));//line for racket
 			
 			
 			gc.setFill(Color.GREENYELLOW);
