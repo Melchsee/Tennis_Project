@@ -18,7 +18,7 @@ public class Tennis extends Application{
 		double angle2 = -Math.PI/8;
 		double angle1 = -Math.PI/8;
 		double ballangle = Math.PI / 2;
-		double ballspeed = -1;
+		double ballspeed = 9;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -38,7 +38,7 @@ public class Tennis extends Application{
 			tennisCourt = new TennisCourt();
 			player1 = new TennisPlayer(475, 50);
 			player2 = new TennisPlayer(475, 900);
-			ball = new TennisBall(490, 750);
+			ball = new TennisBall(490, 250);
 			
 			Canvas canvas = new Canvas(SceneW, SceneH);
 			gc = canvas.getGraphicsContext2D();
@@ -82,6 +82,81 @@ public class Tennis extends Application{
 					{			
 						player2.y =  Math.max(player2.y-speed, 500);
 					}
+					
+					if(keysPressed.getOrDefault(KeyCode.SPACE, false))
+					{			
+						AnimationTimer aTimer = new AnimationTimer(){
+							private boolean max = false;
+							
+							@Override
+							public void handle(long arg0) {
+								if(max)
+								{
+									System.out.println(angle2);
+									angle2 -= Math.PI / 180;
+									if(angle2 <= -Math.PI / 8)
+									{
+										this.stop();
+									}
+								}
+								else
+								{
+									angle2 += Math.PI / 180;
+									if(angle2 >= Math.PI / 8)
+									{
+										max = true;
+									}
+								}
+								
+							}							
+						};
+						aTimer.start();
+					}
+					if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 10 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 10 * (Math.sin(angle2))), 2)) < 10)
+					{
+						ballangle = angle2 - Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 15 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 15 * (Math.sin(angle2))), 2)) < 10)
+					{
+						ballangle = angle2 - Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 20 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 20 * (Math.sin(angle2))), 2)) < 10)
+					{
+						ballangle = angle2 - Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 25 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 25 * (Math.sin(angle2))), 2)) < 10)
+					{
+						ballangle = angle2 - Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 30 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 30 * (Math.sin(angle2))), 2)) < 10)
+					{
+						ballangle = angle2 - Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 35 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 35 * (Math.sin(angle2))), 2)) < 10)
+					{
+						ballangle = angle2 - Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 40 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 40 * (Math.sin(angle2))), 2)) < 10)
+					{
+						ballangle = angle2 - Math.PI/2;
+					}
+					
+					if(keysPressed.getOrDefault(KeyCode.LEFT, false))
+					{			
+						player1.x = Math.max(player1.x-speed, 0);
+					}
+					if(keysPressed.getOrDefault(KeyCode.DOWN, false))
+					{			
+						player1.y = Math.min(player1.y+speed, 450);
+					}
+					if(keysPressed.getOrDefault(KeyCode.RIGHT, false))
+					{			
+						player1.x =  Math.min(player1.x+speed, 950);
+					}
+					if(keysPressed.getOrDefault(KeyCode.UP, false))
+					{			
+						player1.y =  Math.max(player1.y-speed, 0);
+					}
 					if(keysPressed.getOrDefault(KeyCode.ENTER, false))
 					{			
 						AnimationTimer aTimer = new AnimationTimer(){
@@ -110,57 +185,33 @@ public class Tennis extends Application{
 						};
 						aTimer.start();
 					}
-					if(keysPressed.getOrDefault(KeyCode.LEFT, false))
-					{			
-						player1.x = Math.max(player1.x-speed, 0);
-					}
-					if(keysPressed.getOrDefault(KeyCode.DOWN, false))
-					{			
-						player1.y = Math.min(player1.y+speed, 450);
-					}
-					if(keysPressed.getOrDefault(KeyCode.RIGHT, false))
-					{			
-						player1.x =  Math.min(player1.x+speed, 950);
-					}
-					if(keysPressed.getOrDefault(KeyCode.UP, false))
-					{			
-						player1.y =  Math.max(player1.y-speed, 0);
-					}
-					if(keysPressed.getOrDefault(KeyCode.SPACE, false))
-					{			
-						AnimationTimer aTimer = new AnimationTimer(){
-							private boolean max = false;
-							
-							@Override
-							public void handle(long arg0) {
-								System.out.println(Math.toDegrees(angle1));
-								if(max)
-								{
-									angle2 -= Math.PI / 180;
-									if(angle2 <= -Math.PI / 8)
-									{
-										this.stop();
-									}
-								}
-								else
-								{
-									angle2 += Math.PI / 180;
-									if(angle2 >= Math.PI / 8)
-									{
-										max = true;
-									}
-								}
-								
-							}							
-						};
-						aTimer.start();
-					}
-					
-					if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 25)
+					if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 10 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 10 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ballangle = 3 * Math.PI/2 - angle1;
-						
-						//System.out.println(Math.toDegrees(angle1));
+						ballangle = angle1 + Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 15 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 15 * (Math.sin(angle1))), 2)) < 10)
+					{
+						ballangle = angle1 + Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 20 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 20 * (Math.sin(angle1))), 2)) < 10)
+					{
+						ballangle = angle1 + Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 10)
+					{
+						ballangle = angle1 + Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 30 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 30 * (Math.sin(angle1))), 2)) < 10)
+					{
+						ballangle = angle1 + Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 35 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 35 * (Math.sin(angle1))), 2)) < 10)
+					{
+						ballangle = angle1 + Math.PI/2;
+					}
+					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 40 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 40 * (Math.sin(angle1))), 2)) < 10)
+					{
+						ballangle = angle1 + Math.PI/2;
 					}
 					
 					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
