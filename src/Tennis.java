@@ -94,7 +94,6 @@ public class Tennis extends Application{
 							public void handle(long arg0) {
 								if(max)
 								{
-									System.out.println(angle2);
 									angle2 -= Math.PI / 180;
 									if(angle2 <= -Math.PI / 8)
 									{
@@ -277,6 +276,7 @@ public class Tennis extends Application{
 								player2 = new TennisPlayer(475,900);
 								ball = new TennisBall(490,250);
 								ballangle = Math.PI/2;
+								System.out.println(player1.score + ", " + player2.score);
 							}
 						}
 						
@@ -289,11 +289,10 @@ public class Tennis extends Application{
 								player2 = new TennisPlayer(475,900);
 								ball = new TennisBall(490,250);
 								ballangle = Math.PI/2;
+								System.out.println(player1.score + ", " + player2.score);
 							}
 						}
 					}
-					System.out.println(player1.score + ", " + player2.score);
-							
 				}
 			};
 			aTimer.start();
