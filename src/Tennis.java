@@ -15,7 +15,6 @@ import javafx.scene.text.Font;
 
 public class Tennis extends Application{
 		//variables here
-
 		int speed = 5;
 		double angle2 = -Math.PI/8;
 		double angle1 = -Math.PI/8;
@@ -38,16 +37,15 @@ public class Tennis extends Application{
 			int SceneW = 1000;
 			int SceneH = 1000;
 
+			//establishes the starting positions for the players, ball and score
 			Group root = new Group();
 			tennisCourt = new TennisCourt();
 			player1 = new TennisPlayer(475, 50);
 			player2 = new TennisPlayer(475, 900);
 			ball = new TennisBall(420, 90);
-			
+			ball.lastHit = 0;
 			Canvas canvas = new Canvas(SceneW, SceneH);
 			gc = canvas.getGraphicsContext2D();
-		
-			ball.lastHit = 0;
 			Label score = new Label();
 			score.setFont(new Font("Arial", 64));
 			
@@ -71,10 +69,11 @@ public class Tennis extends Application{
 					draw();
 					score.setText("Top:" + player1.score + " - " + "Bot:" + player2.score);
 					
+					//equation for ball movement on court based on angle and speed
 					ball.x += Math.cos(ballangle) * ballspeed;
 					ball.y += Math.sin(ballangle) * ballspeed;
 					
-					
+					//movement controls for player 2
 					if(keysPressed.getOrDefault(KeyCode.A, false))
 					{			
 						player2.x = Math.max(player2.x-speed, 0);
@@ -91,7 +90,7 @@ public class Tennis extends Application{
 					{			
 						player2.y =  Math.max(player2.y-speed, 500);
 					}
-					
+					//player 2 racket swing
 					if(keysPressed.getOrDefault(KeyCode.SPACE, false))
 					{			
 						AnimationTimer aTimer = new AnimationTimer(){
@@ -120,11 +119,14 @@ public class Tennis extends Application{
 						};
 						aTimer.start();
 					}
+					
+					//ball stops moving in between points (when lastHit is zero)
 					if(ball.lastHit == 0)
 					{
 						ballspeed = 0;
 					}
 					
+					//collision algorithm for player 2, with  7 unique angles per player
 					if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 10 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 10 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
@@ -203,6 +205,7 @@ public class Tennis extends Application{
 						}
 					}
 					
+					//movement controls for player 1
 					if(keysPressed.getOrDefault(KeyCode.LEFT, false))
 					{			
 						player1.x = Math.max(player1.x-speed, 0);
@@ -219,6 +222,7 @@ public class Tennis extends Application{
 					{			
 						player1.y =  Math.max(player1.y-speed, 0);
 					}
+					//player 1 racket swing
 					if(keysPressed.getOrDefault(KeyCode.ENTER, false))
 					{			
 						AnimationTimer aTimer = new AnimationTimer(){
@@ -247,6 +251,8 @@ public class Tennis extends Application{
 						};
 						aTimer.start();
 					}
+					
+					//collision algorithm for player 1, with  7 unique angles per player
 					if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 10 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 10 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
@@ -325,6 +331,7 @@ public class Tennis extends Application{
 						}
 					}
 					
+					//the reset button (for when the game is over)
 					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
 					{			
 						player1 = new TennisPlayer(475,50);
@@ -337,6 +344,7 @@ public class Tennis extends Application{
 						ball.lastHit = 0;
 					}
 					
+					//determines whether the ball hit by a player is in or out, and consequently, who should get the point
 					if(Math.sqrt(Math.pow((ball.y-storedballposy), 2) + Math.pow((ball.x-storedballposx), 2)) > 525)
 					{
 						if(ball.lastHit == 1)
@@ -402,6 +410,8 @@ public class Tennis extends Application{
 								}							}
 						}
 					}
+					
+					//first person to reach 10 wins
 					if(player1.score >= 10)
 					{
 						score.setText(player1.score + "-" + player2.score + ": Top wins!!! \n Press ctrl to restart!");
@@ -418,6 +428,7 @@ public class Tennis extends Application{
 			primaryStage.show();
 		}
 		
+		//the graphics for the tennis court, players and ball are created here
 		public void draw()
 		{
 			gc.setFill(Color.WHITE);
