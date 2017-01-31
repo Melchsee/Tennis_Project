@@ -1,6 +1,6 @@
-public class TennisBall {
-	public int x, y;
-	public int lastHit = 0;
+public class TennisBall {//Class for tennis ball
+	public int x, y;//Stores position
+	public int lastHit = 0;//Stores who hit the ball last
 
 	public TennisBall(int x, int y)
 	{
