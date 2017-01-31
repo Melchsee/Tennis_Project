@@ -343,7 +343,7 @@ public class Tennis extends Application{
 						{
 							if((ball.x<200 || ball.x>800 || ball.y<550 || ball.y>900))
 							{
-								if(Math.sqrt(Math.pow((ball.y-storedballposy), 2) + Math.pow((ball.x-storedballposx), 2)) > 750)
+								if(Math.sqrt(Math.pow((ball.y-storedballposy), 2) + Math.pow((ball.x-storedballposx), 2)) > (player1.y - 500 + 450))
 								{
 									player1.score += 1;		
 									ball.lastHit = 0;
@@ -375,7 +375,7 @@ public class Tennis extends Application{
 						{
 							if(ball.x<200 || ball.x>800 || ball.y<100 || ball.y>550)
 							{
-								if(Math.sqrt(Math.pow((ball.y-storedballposy), 2) + Math.pow((ball.x-storedballposx), 2)) > 750)
+								if(Math.sqrt(Math.pow((ball.y-storedballposy), 2) + Math.pow((ball.x-storedballposx), 2)) > (500 - player2.y + 450))
 								{
 									player2.score += 1;		
 									ball.lastHit = 0;
