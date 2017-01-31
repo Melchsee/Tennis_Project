@@ -2,11 +2,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 
-public class TennisCourt extends StackPane{
+public class TennisCourt extends StackPane{//Class for Tennis court
 
 		public TennisCourt()
 		{
-			int tennisCourtWidth = (int) 600;
+			int tennisCourtWidth = (int) 600;//Width and height of court
 			int tennisCourtHeight = (int) 900;
 		
 			Rectangle r = new Rectangle();
@@ -14,11 +14,11 @@ public class TennisCourt extends StackPane{
 			r.setY((1000-tennisCourtHeight)/2);
 			r.setWidth(tennisCourtWidth);
 			r.setHeight(tennisCourtHeight);
-			r.setFill(Color.WHITE);
+			r.setFill(Color.WHITE);//Color lines
 			r.setStroke(Color.BLACK);
 			r.setStrokeWidth(5);
 			
-			Line horLines[] = new Line[3]; 
+			Line horLines[] = new Line[3]; //draws horizontal lines
 			for(int i = 0; i < horLines.length; i++)
 			{
 				horLines[i] = new Line();
