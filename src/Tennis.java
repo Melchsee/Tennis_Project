@@ -22,7 +22,7 @@ public class Tennis extends Application{
 		double ballangle = Math.PI/2;
 		double ballspeed = 6;
 		double storedballposx = 420;
-		double storedballposy = 70;
+		double storedballposy = 90;
 		TennisCourt tennisCourt;
 		TennisPlayer player1, player2;
 		TennisBall ball;
@@ -42,7 +42,7 @@ public class Tennis extends Application{
 			tennisCourt = new TennisCourt();
 			player1 = new TennisPlayer(475, 50);
 			player2 = new TennisPlayer(475, 900);
-			ball = new TennisBall(420, 70);
+			ball = new TennisBall(420, 90);
 			
 			Canvas canvas = new Canvas(SceneW, SceneH);
 			gc = canvas.getGraphicsContext2D();
@@ -125,7 +125,7 @@ public class Tennis extends Application{
 						ballspeed = 0;
 					}
 					
-					if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 10 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 10 * (Math.sin(angle2))), 2)) < 10)
+					if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 10 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 10 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
 						{
@@ -136,7 +136,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 15 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 15 * (Math.sin(angle2))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 15 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 15 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
 						{
@@ -147,7 +147,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 20 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 20 * (Math.sin(angle2))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 20 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 20 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
 						{
@@ -158,7 +158,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 25 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 25 * (Math.sin(angle2))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 25 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 25 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
 						{
@@ -169,7 +169,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 30 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 30 * (Math.sin(angle2))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 30 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 30 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
 						{
@@ -180,7 +180,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 35 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 35 * (Math.sin(angle2))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 35 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 35 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
 						{
@@ -191,7 +191,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 40 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 40 * (Math.sin(angle2))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player2.x + 60 + 40 * (Math.cos(angle2))), 2) + Math.pow((ball.y + 10) - (player2.y + 25 + 40 * (Math.sin(angle2))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 1)
 						{
@@ -247,7 +247,7 @@ public class Tennis extends Application{
 						};
 						aTimer.start();
 					}
-					if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 10 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 10 * (Math.sin(angle1))), 2)) < 10)
+					if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 10 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 10 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
 						{
@@ -258,7 +258,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 15 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 15 * (Math.sin(angle1))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 15 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 15 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
 						{
@@ -269,7 +269,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 20 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 20 * (Math.sin(angle1))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 20 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 20 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
 						{
@@ -280,7 +280,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
 						{
@@ -291,7 +291,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 30 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 30 * (Math.sin(angle1))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 30 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 30 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
 						{
@@ -302,7 +302,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 35 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 35 * (Math.sin(angle1))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 35 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 35 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
 						{
@@ -313,7 +313,7 @@ public class Tennis extends Application{
 							ballspeed = 6;
 						}
 					}
-					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 40 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 40 * (Math.sin(angle1))), 2)) < 10)
+					else if(Math.sqrt(Math.pow((ball.x + 10) - (player1.x - 10 - 40 * (Math.cos(angle1))), 2) + Math.pow((ball.y + 10) - (player1.y + 25 - 40 * (Math.sin(angle1))), 2)) < 10)
 					{
 						if(ball.lastHit == 0 || ball.lastHit == 2)
 						{
@@ -329,7 +329,7 @@ public class Tennis extends Application{
 					{			
 						player1 = new TennisPlayer(475,50);
 						player2 = new TennisPlayer(475,900);
-						ball = new TennisBall(420,70);
+						ball = new TennisBall(420,90);
 						ballangle = Math.PI/2;
 						ballspeed = 6;
 						player1.score = 0;
@@ -360,12 +360,12 @@ public class Tennis extends Application{
 								player2.y = 900;
 								if((player1.score + player2.score)%2 == 0)
 								{
-									ball = new TennisBall(420, 70);
+									ball = new TennisBall(420, 90);
 									ballangle = Math.PI/2;
 								}
 								else
 								{
-									ball = new TennisBall(580, 930);
+									ball = new TennisBall(560, 890);
 									ballangle = -Math.PI/2;
 								}
 							}
@@ -392,12 +392,12 @@ public class Tennis extends Application{
 								player2.y = 900;
 								if((player1.score + player2.score)%2 == 0)
 								{
-									ball = new TennisBall(420, 70);
+									ball = new TennisBall(420, 90);
 									ballangle = Math.PI/2;
 								}
 								else
 								{
-									ball = new TennisBall(580, 930);
+									ball = new TennisBall(560, 890);
 									ballangle = -Math.PI/2;
 								}							}
 						}
