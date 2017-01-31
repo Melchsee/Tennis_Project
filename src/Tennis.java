@@ -127,59 +127,80 @@ public class Tennis extends Application{
 					
 					if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 10 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 10 * (Math.sin(angle2))), 2)) < 10)
 					{
-						ball.lastHit = 2;
-						ballangle = angle2 - Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 1)
+						{
+							ball.lastHit = 2;
+							ballangle = angle2 - Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 15 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 15 * (Math.sin(angle2))), 2)) < 10)
 					{
-						ball.lastHit = 2;
-						ballangle = angle2 - Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 1)
+						{
+							ball.lastHit = 2;
+							ballangle = angle2 - Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 20 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 20 * (Math.sin(angle2))), 2)) < 10)
 					{
-						ball.lastHit = 2;
-						ballangle = angle2 - Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 1)
+						{
+							ball.lastHit = 2;
+							ballangle = angle2 - Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 25 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 25 * (Math.sin(angle2))), 2)) < 10)
 					{
-						ball.lastHit = 2;
-						ballangle = angle2 - Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 1)
+						{
+							ball.lastHit = 2;
+							ballangle = angle2 - Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 30 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 30 * (Math.sin(angle2))), 2)) < 10)
 					{
-						ball.lastHit = 2;
-						ballangle = angle2 - Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 1)
+						{
+							ball.lastHit = 2;
+							ballangle = angle2 - Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 35 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 35 * (Math.sin(angle2))), 2)) < 10)
 					{
-						ball.lastHit = 2;
-						ballangle = angle2 - Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 1)
+						{
+							ball.lastHit = 2;
+							ballangle = angle2 - Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player2.x + 60 + 40 * (Math.cos(angle2))), 2) + Math.pow(ball.y - (player2.y + 25 + 40 * (Math.sin(angle2))), 2)) < 10)
 					{
-						ball.lastHit = 2;
-						ballangle = angle2 - Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 1)
+						{
+							ball.lastHit = 2;
+							ballangle = angle2 - Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					
 					if(keysPressed.getOrDefault(KeyCode.LEFT, false))
@@ -228,59 +249,80 @@ public class Tennis extends Application{
 					}
 					if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 10 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 10 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ball.lastHit = 1;
-						ballangle = angle1 + Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 2)
+						{
+							ball.lastHit = 1;
+							ballangle = angle1 + Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 15 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 15 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ball.lastHit = 1;
-						ballangle = angle1 + Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 2)
+						{
+							ball.lastHit = 1;
+							ballangle = angle1 + Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 20 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 20 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ball.lastHit = 1;
-						ballangle = angle1 + Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 2)
+						{
+							ball.lastHit = 1;
+							ballangle = angle1 + Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 25 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 25 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ball.lastHit = 1;
-						ballangle = angle1 + Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 2)
+						{
+							ball.lastHit = 1;
+							ballangle = angle1 + Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 30 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 30 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ball.lastHit = 1;
-						ballangle = angle1 + Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 2)
+						{
+							ball.lastHit = 1;
+							ballangle = angle1 + Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 35 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 35 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ball.lastHit = 1;
-						ballangle = angle1 + Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 2)
+						{
+							ball.lastHit = 1;
+							ballangle = angle1 + Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					else if(Math.sqrt(Math.pow(ball.x - (player1.x - 10 - 40 * (Math.cos(angle1))), 2) + Math.pow(ball.y - (player1.y + 25 - 40 * (Math.sin(angle1))), 2)) < 10)
 					{
-						ball.lastHit = 1;
-						ballangle = angle1 + Math.PI/2;
-						storedballposx = ball.x;
-						storedballposy = ball.y;
-						ballspeed = 6;
+						if(ball.lastHit == 0 || ball.lastHit == 2)
+						{
+							ball.lastHit = 1;
+							ballangle = angle1 + Math.PI/2;
+							storedballposx = ball.x;
+							storedballposy = ball.y;
+							ballspeed = 6;
+						}
 					}
 					
 					if(keysPressed.getOrDefault(KeyCode.CONTROL, false))
